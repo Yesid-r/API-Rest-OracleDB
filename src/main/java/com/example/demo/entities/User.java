@@ -5,7 +5,9 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -39,6 +41,9 @@ public class User implements Serializable {
 	@Column (name = "dateBirthday")
 	private Date dateBirthdaay;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Hospital hospital;
+	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -52,6 +57,7 @@ public class User implements Serializable {
 		this.phone = phone;
 		this.emailUser = emailUser;
 		this.password = password;
+		this.hospital = new Hospital();
 	}
 
 
